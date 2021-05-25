@@ -6,10 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LindaVillatoro/demoqa-testing.git"
-  },
   "keywords": [
     "Automation",
     "Webdriver"
@@ -17,9 +13,7 @@
   "author": "LindaVillatoro",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LindaVillatoro/demoqa-testing/issues"
   },
-  "homepage": "https://github.com/LindaVillatoro/demoqa-testing#readme",
   "devDependencies": {
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
