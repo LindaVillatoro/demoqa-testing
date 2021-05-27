@@ -24,7 +24,14 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './tests/**.js'
+        //To run all
+        //'./tests/**.js'
+        
+        //Tu run just one
+        //'./tests/login.js'
+       //'./tests/profile.js'
+       './tests/bookstore.js'
+
     ],
     // Patterns to exclude.
     exclude: [

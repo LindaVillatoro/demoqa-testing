@@ -1,72 +1,66 @@
 import {short,medium,long} from '../lib/timeout'
 import {desktop} from '../lib/device'
+import App from '../page-objects/pages/App'
+import LoginPage from '../page-objects/pages/LoginPage';
 
 describe('Book Store Aplication Testing- Login', () => {
     
-    it('Load the Website', ()=>{
-        browser.url('https://demoqa.com/') 
+    it('Load the Website', ()=>{ 
+        App.openHomepage()
         browser.setWindowSize(desktop[0],desktop[1])
-            var runInBrowser = function(argument) { 
-            argument.click();
-          };
-
-          var bookstoreapp = browser.$('#app > div > div > div.home-body > div > div:nth-child(6) > div > div.card-body > h5')
-          bookstoreapp.waitForExist()
-          browser.execute(runInBrowser, bookstoreapp);
-          browser.pause(short)
+        var bookstoreapp = browser.$('#app > div > div > div.home-body > div > div:nth-child(6) > div > div.card-body > h5')
+        bookstoreapp.scrollIntoView()
+        bookstoreapp.waitForExist()
+        bookstoreapp.click()
+        browser.pause(short)
         
     })
 
-    
     it('Should go to the Login page', ()=> {
         browser.setWindowSize(desktop[0],desktop[1])
-        var runInBrowser = function(argument) { 
-            argument.click();
-          };
+        
         var bookstorespan = browser.$('#app > div > div > div.row > div:nth-child(1) > div > div > div:nth-child(6) > span > div > div.header-text > span')  
-        var loginspan = browser.$('//*[@id="item-0"]')
+        bookstorespan.scrollIntoView()
         bookstorespan.waitForExist()
+        bookstorespan.click()
+        
+        var loginspan = browser.$('//*[@id="item-0"]')
+        loginspan.scrollIntoView()
         loginspan.waitForExist()
-        browser.execute(runInBrowser, bookstorespan);
+        browser.pause(short) 
+        //loginspan.click()
         //browser.execute(runInBrowser, loginspan);
        // $('//*[@id="item-0"]').click()
-        browser.pause(short)   
+          
     })
 
-    it('Shoul log with invalid credetials',()=>{
-        browser.url('https://demoqa.com/login')
+    it('Shoul log with invalid credentials',()=>{
+        App.openLoginPage()
         browser.setWindowSize(desktop[0],desktop[1])
         const loginWelcome = $('h5')
         expect(loginWelcome).toHaveText('Login in Book Store')
-        $('#userName').waitForExist()
-        $('#userName').setValue('linda')
-        $('#password').waitForExist()
-        $('#password').setValue('linda123.')
-        $('#login').waitForExist()
-        $('#login').click()
+        LoginPage.formIsVisible()
+        LoginPage.fillForm('linda','linda123')
+        LoginPage.submitLoginForm()
         const InvalidUser =  $('#name')
         expect(InvalidUser).toHaveText('Invalid username or password!')
         browser.pause(short)
     })
 
     it('Shoul log with valid credetials',()=>{
-        browser.url('https://demoqa.com/login')
+        App.openLoginPage()
         browser.setWindowSize(desktop[0],desktop[1])
         const loginWelcome = $('h5')
         expect(loginWelcome).toHaveText('Login in Book Store')
-        $('#userName').waitForExist()
-        $('#userName').setValue('LindaVillatoro')
-        $('#password').waitForExist()
-        $('#password').setValue('1Lindacecilia*')
-        $('#login').waitForExist()
-        $('#login').click()
-        $('#submit').waitForExist()
-        $('#submit').click()
+        LoginPage.formIsVisible()
+        LoginPage.fillForm('LindaVillatoro','1lindacecilia*')
+        LoginPage.submitLoginForm()
+        LoginPage.logoutForm()
         browser.pause(short)
     })
 
     it('Should Create a new User', () => { 
-        browser.url('https://demoqa.com/login')
+        App.openLoginPage()
         browser.setWindowSize(desktop[0],desktop[1])
         $('#newUser').waitForExist()
         $('#newUser').click()
@@ -84,10 +78,17 @@ describe('Book Store Aplication Testing- Login', () => {
         $('#password').waitForExist()
         $('#password').setValue('Anaandino123')
         //$('#recaptcha-anchor').click()
-        $('#register').waitForExist()
-        //$('#register').click()
-        $('#gotologin').waitForExist()
-        $('#gotologin').click()
+        const registerbutton = $('#register');
+        // scroll to specific element
+        registerbutton.scrollIntoView();
+        registerbutton.waitForExist()
+        registerbutton.click()
+        
+        const goToLogin = $('#gotologin')
+         // scroll to specific element
+        goToLogin.scrollIntoView();
+        goToLogin.waitForExist()
+        goToLogin.click()
         browser.pause(short)
     });
  
