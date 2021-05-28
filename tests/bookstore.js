@@ -15,8 +15,6 @@ describe('BookStore Aplication Testing -Book Store', () => {
         LoginPage.fillForm('LindaVillatoro','1lindacecilia*')
         browser.pause(short)
         LoginPage.submitLoginForm()
-        //LoginPage.logoutForm()
-        //browser.pause(short)
     })
 
 
@@ -42,6 +40,7 @@ describe('BookStore Aplication Testing -Book Store', () => {
         //To work with text links
         $('*=Learning JavaScript').click()
         const addToCollection = $('//*[@id="addNewRecordButton"]')
+        //const addToCollection = $('/html/body/div/div/div/div[2]/div[2]/div[1]/div[2]/div[9]/div[2]/button')
         addToCollection.scrollIntoView()
         browser.pause(short)
         addToCollection.click()  

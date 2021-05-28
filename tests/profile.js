@@ -33,11 +33,6 @@ describe('BookStore Aplication Testing -  Profile', () => {
         $('#closeSmallModal-ok').scrollIntoView()
         $('#closeSmallModal-ok').click()
         
-        /*var bookstore = browser.$('/html/body/div/div/div/div[2]/div[1]/div/div/div[6]/div/ul/li[2]/span')
-        bookstore.scrollIntoView()
-        bookstore.waitForExist() 
-        bookstore.click()
-        browser.pause(short)*/
         $('#gotoStore').scrollIntoView()
         $('#gotoStore').click()
         $('#searchBox').waitForExist()
@@ -56,3 +51,5 @@ describe('BookStore Aplication Testing -  Profile', () => {
        
     });
 });
+
+
