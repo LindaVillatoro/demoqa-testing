@@ -20,22 +20,15 @@ describe('Book Store Aplication Testing- Login', () => {
         browser.setWindowSize(desktop[0],desktop[1])
         
         var bookstorespan = browser.$('#app > div > div > div.row > div:nth-child(1) > div > div > div:nth-child(6) > span > div > div.header-text > span')  
+        var loginspan = $('/html/body/div/div/div/div[2]/div[1]/div/div/div[6]/div/ul/li[1]/span')
         bookstorespan.scrollIntoView()
         bookstorespan.waitForExist()
         bookstorespan.click()
-        
-        var loginspan = browser.$('//*[@id="item-0"]')
-        loginspan.scrollIntoView()
-        loginspan.waitForExist()
-        browser.pause(short) 
-        //loginspan.click()
-        //browser.execute(runInBrowser, loginspan);
-       // $('//*[@id="item-0"]').click()
-          
+        loginspan.click()
+        browser.pause(short)       
     })
 
     it('Shoul log with invalid credentials',()=>{
-        App.openLoginPage()
         browser.setWindowSize(desktop[0],desktop[1])
         const loginWelcome = $('h5')
         expect(loginWelcome).toHaveText('Login in Book Store')
@@ -47,7 +40,7 @@ describe('Book Store Aplication Testing- Login', () => {
         browser.pause(short)
     })
 
-    it('Shoul log with valid credetials',()=>{
+    it('Shoul log with valid credentials',()=>{
         App.openLoginPage()
         browser.setWindowSize(desktop[0],desktop[1])
         const loginWelcome = $('h5')

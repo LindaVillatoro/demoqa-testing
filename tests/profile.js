@@ -11,6 +11,7 @@ describe('BookStore Aplication Testing -  Profile', () => {
         expect(loginWelcome).toHaveText('Login in Book Store')
         LoginPage.formIsVisible()
         LoginPage.fillForm('LindaVillatoro','1lindacecilia*')
+        browser.pause(short)
         LoginPage.submitLoginForm()
         //LoginPage.logoutForm()
         browser.pause(short)
@@ -21,10 +22,37 @@ describe('BookStore Aplication Testing -  Profile', () => {
         $('#searchBox').waitForExist()
         $('#searchBox').setValue('Git Pocket Guide')
         browser.keys('Enter')
-        $('#delete-record-undefined').waitForExist()
-        $('#delete-record-undefined').click()
-        $('#gotoStore').waitForExist()
+        //$('#gotoStore').waitForExist()
         $('#submit').waitForExist()
     });
     
+    it('Should delete a book and add it again', () => {
+        $('#delete-record-undefined').scrollIntoView()
+        $('#delete-record-undefined').click()
+        $('.modal-footer').waitForExist()
+        $('#closeSmallModal-ok').scrollIntoView()
+        $('#closeSmallModal-ok').click()
+        
+        /*var bookstore = browser.$('/html/body/div/div/div/div[2]/div[1]/div/div/div[6]/div/ul/li[2]/span')
+        bookstore.scrollIntoView()
+        bookstore.waitForExist() 
+        bookstore.click()
+        browser.pause(short)*/
+        $('#gotoStore').scrollIntoView()
+        $('#gotoStore').click()
+        $('#searchBox').waitForExist()
+        $('#searchBox').setValue('Git Pocket Guide')
+        browser.keys('Enter')
+        $('.rt-td').click()
+        $('.action-buttons').waitForExist()
+        const title = $('.mr-2 > a')
+        expect(title).toHaveText('Git Pocket Guide')
+        //To work with text links
+        $('*=Git Pocket Guide').click()
+        const addToCollection = $('//*[@id="addNewRecordButton"]')
+        addToCollection.scrollIntoView()
+        browser.pause(short)
+        addToCollection.click() 
+       
+    });
 });

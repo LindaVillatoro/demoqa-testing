@@ -8,6 +8,10 @@ class App{
         browser.url('https://demoqa.com/login')
     }
 
+    openBookPage(){
+        browser.url('https://demoqa.com/books')
+    }
+
 
 }
 
