@@ -29,8 +29,8 @@ exports.config = {
         
         //Tu run just one
         //'./tests/login.js'
-        //'./tests/profile.js'
-       './tests/bookstore.js'
+        './tests/profile.js'
+       //'./tests/bookstore.js'
 
     ],
     // Patterns to exclude.

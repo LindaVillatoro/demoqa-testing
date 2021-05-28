@@ -24,30 +24,19 @@ describe('BookStore Aplication Testing -  Profile', () => {
         browser.keys('Enter')
         //$('#gotoStore').waitForExist()
         $('#submit').waitForExist()
+        //browser.pause(medium)
+
     });
     
     it('Should delete a book and add it again', () => {
-        $('#delete-record-undefined').scrollIntoView()
+        browser.url('https://demoqa.com/profile')
+        const table = $('//*[@id="app"]/div/div/div[2]/div[2]/div[1]/div[2]')
+        table.waitForExist()
         $('#delete-record-undefined').click()
         $('.modal-footer').waitForExist()
         $('#closeSmallModal-ok').scrollIntoView()
         $('#closeSmallModal-ok').click()
         
-        $('#gotoStore').scrollIntoView()
-        $('#gotoStore').click()
-        $('#searchBox').waitForExist()
-        $('#searchBox').setValue('Git Pocket Guide')
-        browser.keys('Enter')
-        $('.rt-td').click()
-        $('.action-buttons').waitForExist()
-        const title = $('.mr-2 > a')
-        expect(title).toHaveText('Git Pocket Guide')
-        //To work with text links
-        $('*=Git Pocket Guide').click()
-        const addToCollection = $('//*[@id="addNewRecordButton"]')
-        addToCollection.scrollIntoView()
-        browser.pause(short)
-        addToCollection.click() 
        
     });
 });

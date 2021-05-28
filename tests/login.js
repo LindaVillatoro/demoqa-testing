@@ -55,8 +55,9 @@ describe('Book Store Aplication Testing- Login', () => {
     it('Should Create a new User', () => { 
         App.openLoginPage()
         browser.setWindowSize(desktop[0],desktop[1])
-        $('#newUser').waitForExist()
-        $('#newUser').click()
+        const newUserButton = $('#newUser')
+        newUserButton.waitForExist()
+        newUserButton.click()
         expect(browser).toHaveUrl('https://demoqa.com/register')
         $('#userForm').waitForExist()
         const newUsertitle = $('h4')
